@@ -4,15 +4,21 @@ const int ledGroen = 12;
 
 void setup()
 {
-  // Pinmodes instellen voor de hierboven gedefinieerde pinnen
-  pinMode(ledRood, OUTPUT); 
-  pinMode(ledGroen, OUTPUT);  
+  // Functie aanroepen om pinmodes in te stellen
+  setupPinModes();
 }
 
 void loop()
 {
   // Roep de functie blinkLeds aan
   blinkLeds();  
+}
+
+void setupPinModes()
+{
+  // Pinmodes instellen voor de hierboven gedefinieerde pinnen
+  pinMode(ledRood, OUTPUT); 
+  pinMode(ledGroen, OUTPUT);  
 }
 
 void blinkLeds()
