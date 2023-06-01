@@ -5,16 +5,22 @@ const int amtOfPins = 8;
 
 void setup()
 {
-  // Stel de pinmodes in voor alle pinnen in de hierboven gemaakte array
-  for (int count = 0; count < amtOfPins; count++) {
-    pinMode(pinArray[count], OUTPUT);
-  }
+  // Functie aanroepen om pinmodes in te stellen
+  setupPinModes();
 }
 
 void loop()
 {
   // Roep de backAndForth functie aan
   backAndForth();
+}
+
+void setupPinModes()
+{
+  // Stel de pinmodes in voor alle pinnen in de hierboven gemaakte array
+  for (int count = 0; count < amtOfPins; count++) {
+    pinMode(pinArray[count], OUTPUT);
+  }
 }
 
 void backAndForth()
