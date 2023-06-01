@@ -1,24 +1,33 @@
-const int ledRood = 11;  // Definieer pin 11 als ledRood
-const int ledGroen = 12;  // Definieer pin 12 als ledGroen
+// De te gebruiken pinnen definiëren
+const int ledRood = 11; 
+const int ledGroen = 12; 
 
 void setup()
 {
-  pinMode(ledRood, OUTPUT);  // Zet de pinmodus van ledRood naar OUTPUT
-  pinMode(ledGroen, OUTPUT);  // Zet de pinmodus van ledGroen naar OUTPUT
+  // Pinmodes instellen voor de hierboven gedefinieerde pinnen
+  pinMode(ledRood, OUTPUT); 
+  pinMode(ledGroen, OUTPUT);  
 }
 
 void loop()
 {
-  blinkLeds();  // Roep de functie blinkLeds aan
+  // Roep de functie blinkLeds aan
+  blinkLeds();  
 }
 
 void blinkLeds()
 {
-  digitalWrite(ledRood, HIGH);  // Zet ledRood aan (HIGH)
-  delay(1000);  // Wacht 1000 milliseconden (1 seconde)
-  digitalWrite(ledRood, LOW);  // Zet ledRood uit (LOW)
-  digitalWrite(ledGroen, HIGH);  // Zet ledGroen aan (HIGH)
-  delay(1000);  // Wacht 1000 milliseconden (1 seconde)
-  digitalWrite(ledGroen, LOW);  // Zet ledGroen uit (LOW)
+  // Zet de rode led aan
+  digitalWrite(ledRood, HIGH);  
+  // Wacht 1 seconde
+  delay(1000); 
+  // Zet de rode led uit
+  digitalWrite(ledRood, LOW);  
+  // Zet de groene led aan
+  digitalWrite(ledGroen, HIGH);  
+  // Wacht 1 seconde
+  delay(1000);
+  // Zet de groene led uit  
+  digitalWrite(ledGroen, LOW);  
 }
 
