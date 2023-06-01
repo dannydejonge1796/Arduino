@@ -27,10 +27,10 @@ void loop() {
         Serial.println("LED on");
         digitalWrite(ledRed, HIGH);
       }
+      
+      // Na 1 keer moet de condition niet nogmaals worden uitgevoerd, status check button press naar false
+      checkBtnPress = false;
     }
-    
-    // Na 1 keer moet de condition niet nogmaals worden uitgevoerd, status check button press naar false
-    checkBtnPress = false;
   } else {
     // Als knop na indrukken wordt losgelaten
   	if (digitalRead(button) == HIGH) {
@@ -39,4 +39,3 @@ void loop() {
     }
   }
 }
-
