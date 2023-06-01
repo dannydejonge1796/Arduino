@@ -23,8 +23,8 @@ void setup()
   // Vorm de waarde om tot waardes van 0-6 door de mapPotentioValue functie aan te roepen
   currentPotentioRead = mapPotentiometerValue(currentPotentioRead);
   
-  // Laat een led branden met de initiele waarde
-  digitalWrite(pinArray[currentPotentioRead], HIGH);
+  // Roep functie aan om de leds in te stellen met de waarde van de potentio
+  setLedsByPotentio(currentPotentioRead);
 }
 
 void loop()
@@ -35,13 +35,27 @@ void loop()
   
   // Als deze waarde in de loep niet gelijk is aan de current betekend dit dat de waarde veranderd is
   if (potentioRead != currentPotentioRead) {
-    // Schakel alle leds uit door de functie aan te roepen
-    turnOffAllLEDs();
-    // Zet juist led aan, vind deze met de waarde van de potentio als idx in de array
-    digitalWrite(pinArray[potentioRead], HIGH);
+    // Roep functie aan om de leds in te stellen met de waarde van de potentio
+    setLedsByPotentio(potentioRead);
     
     // Stel de nieuwe waarde van de potentio in als current
     currentPotentioRead = potentioRead;
+  }
+}
+
+void setLedsByPotentio(int value)
+{
+  // Loop om de leds aan te zetten
+  // Loopt van megegeven potentio waarde tot de aantal gebruikte pinnen
+  // Dit is van links naar rechts aangezien de hoogste waarde aan de linker kant van de potentiometer zit
+  for (int count = value; count < amtOfPins; count++) {
+    digitalWrite(pinArray[count], HIGH);
+  }
+
+  // Loop door de overige pins om deze uit te zetten
+  // Van 0 naar de huidige waarde van de potentio min 1
+  for (int count = 0; count < value; count++) {
+    digitalWrite(pinArray[count], LOW);
   }
 }
 
@@ -50,14 +64,6 @@ void initializeLEDs()
   // Stel de pinmode in voor alle pins uit de array
   for (int count = 0; count < amtOfPins; count++) {
     pinMode(pinArray[count], OUTPUT);
-  }
-}
-
-void turnOffAllLEDs()
-{
-  // Schakel alle leds uit
-  for (int count = 0; count < amtOfPins; count++) {
-    digitalWrite(pinArray[count], LOW);
   }
 }
 
